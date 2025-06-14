@@ -1,0 +1,23 @@
+/build
+# Firebase
+google-services.json
+
+# Android Studio & IntelliJ
+*.iml
+.idea/
+.gradle/
+local.properties
+
+# Build output
+/build/
+*/build/
+captures/
+
+# Keystore files
+*.jks
+*.keystore
+
+# Others
+.DS_Store
+.env
+.env.*
