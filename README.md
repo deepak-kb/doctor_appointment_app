@@ -63,5 +63,5 @@ An Android app built using Kotlin + Jetpack Compose to help users book appointme
 ## 📬 Contact
 
 **Deepak Kumar**  
-📧 [your-email@example.com]  
-🌐 [GitHub Profile](https://github.com/your-username)
+📧 [deepakkbkumar@gmail.com]  
+🌐 [GitHub Profile](https://github.com/deepak-kb)
