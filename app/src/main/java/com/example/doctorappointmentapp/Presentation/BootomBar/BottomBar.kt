@@ -24,8 +24,8 @@ fun BottomBar(
     val items = listOf(
         BottomBarItem("Explorer", R.drawable.btn_1),
         BottomBarItem("WishList", R.drawable.btn_2),
-        BottomBarItem("Profile", R.drawable.btn_3),
-        BottomBarItem("Account", R.drawable.btn_4)
+        BottomBarItem("Account", R.drawable.btn_3),
+        BottomBarItem("Profile", R.drawable.btn_4)
     )
 
     NavigationBar(
@@ -38,7 +38,7 @@ fun BottomBar(
                 onClick = { onItemSelected(index) },
                 icon = {
                     Column(
-                        modifier = Modifier.height(70.dp).width(50.dp),
+                        modifier = Modifier.height(50.dp).width(50.dp),
                         horizontalAlignment = Alignment.CenterHorizontally,
                         verticalArrangement = Arrangement.Center
                     ) {
@@ -50,7 +50,7 @@ fun BottomBar(
                         )
                         Text(
                             text = item.label,
-                            fontSize = 12.sp,
+                            fontSize = 10.sp,
                             color = Color.Black,
                             textAlign = TextAlign.Center,
                             fontWeight = FontWeight.ExtraBold,

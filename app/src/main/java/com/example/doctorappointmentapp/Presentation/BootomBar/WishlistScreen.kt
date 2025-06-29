@@ -14,6 +14,7 @@ import androidx.navigation.NavController
 import com.example.doctorappointmentapp.Data.DoctorsModel
 import com.example.doctorappointmentapp.Presentation.Component.DoctorItem
 import com.example.doctorappointmentapp.Presentation.ViewModel.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -22,14 +23,11 @@ fun WishlistScreen(
     viewModel: MainViewModel,
     userId: String
 ) {
-    //  Load the wishlist once
     LaunchedEffect(Unit) {
         viewModel.loadWishlist(userId)
     }
-    //  Observe server‐provided wishlist
-    val wishlistedFromServer by viewModel.wishlist.collectAsState(initial = emptyList())
 
-    //  Extract just the IDs for UI toggling
+    val wishlistedFromServer by viewModel.wishlist.collectAsState(initial = emptyList())
     val wishlistedIds = remember(wishlistedFromServer) { wishlistedFromServer.map { it.Id } }
 
 
@@ -53,17 +51,13 @@ fun WishlistScreen(
                     userId = userId,
                     wishlistedIds = wishlistedIds,
                     onToggleWishlist = { clickedDoctor ->
-                        // Remove from wishlist (since we’re in the wishlist screen)
                         viewModel.removeFromWishlist(clickedDoctor.Id, userId)
-                        // Refresh once
                         viewModel.loadWishlist(userId)
                     },
                     onClickMakeAppointment = { clickedDoctor ->
-                        // 1. Store the doctor in savedStateHandle
                         navController.currentBackStackEntry
                             ?.savedStateHandle
                             ?.set("doctor", clickedDoctor)
-                        // 2. Navigate to detail
                         navController.navigate("detail")
                     }
                 )

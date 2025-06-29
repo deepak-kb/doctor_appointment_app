@@ -1,5 +1,6 @@
 package com.example.doctorappointmentapp.Presentation.AuthScreens
 
+import android.util.Log
 import android.widget.Toast
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -12,11 +13,12 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import com.example.doctorappointmentapp.Presentation.ViewModel.MainViewModel
 import com.example.doctorappointmentapp.R
 import com.google.firebase.auth.FirebaseAuth
 
 @Composable
-fun LoginScreen(navController: NavController){
+fun LoginScreen(navController: NavController,mainViewModel: MainViewModel) {
     val context = LocalContext.current
     var email by remember { mutableStateOf("") }
     var password by remember { mutableStateOf("") }
@@ -59,12 +61,13 @@ fun LoginScreen(navController: NavController){
                     auth.signInWithEmailAndPassword(email, password)
                         .addOnCompleteListener { task ->
                             if (task.isSuccessful) {
-                                Toast.makeText(context, "Login Successful", Toast.LENGTH_SHORT).show()
+                                val userId = auth.currentUser?.uid.orEmpty()
+                                mainViewModel.setUserId(userId)
                                 navController.navigate("home") {
                                     popUpTo("login") { inclusive = true }
                                 }
                             } else {
-                                Toast.makeText(context, "Login Failed: ${task.exception?.message}", Toast.LENGTH_LONG).show()
+                                Toast.makeText( context,"Login Failed: ${task.exception?.message}",Toast.LENGTH_LONG).show()
                             }
                         }
                 } else {

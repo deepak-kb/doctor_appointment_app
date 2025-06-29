@@ -25,15 +25,19 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import com.example.doctorappointmentapp.Presentation.ViewModel.MainViewModel
 import com.google.firebase.auth.FirebaseAuth
 import kotlinx.coroutines.delay
 
 @Composable
-fun SplashScreen(navController: NavHostController) {
-    val userAuth = FirebaseAuth.getInstance().currentUser
+fun SplashScreen(navController: NavHostController,mainViewModel: MainViewModel) {
+
+    val user = FirebaseAuth.getInstance().currentUser
+
     LaunchedEffect(Unit) {
-        delay(3000) // 3-second delay
-        if (userAuth != null) {
+        delay(3000)
+        if (user != null) {
+            mainViewModel.setUserId(user.uid)
             navController.navigate("home") {
                 popUpTo("splash") { inclusive = true }
             }

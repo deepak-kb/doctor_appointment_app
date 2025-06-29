@@ -22,42 +22,25 @@ import com.google.firebase.auth.FirebaseAuth
 @Composable
 fun AppNavigation(navController: NavHostController) {
     val mainViewModel: MainViewModel = viewModel()
-    val userId = FirebaseAuth.getInstance().currentUser?.uid.orEmpty()
+    val userId: String=mainViewModel.currentUserId
+
 
     NavHost(navController = navController, startDestination = "splash") {
-        composable("splash") { SplashScreen(navController) }
-        composable("login") { LoginScreen(navController) }
+        composable("splash") { SplashScreen(navController,mainViewModel) }
+        composable("login") { LoginScreen(navController,mainViewModel) }
         composable("signup") { SignupScreen(navController) }
-        composable("home") { HomeScreen(userId,navController, mainViewModel) }
 
+        composable("home") { HomeScreen(navController, mainViewModel,userId) }
         composable("detail") {
-            val doctor = navController
-                .previousBackStackEntry
-                ?.savedStateHandle
-                ?.get<DoctorsModel>("doctor")
-
+            val doctor = navController.previousBackStackEntry?.savedStateHandle?.get<DoctorsModel>("doctor")
             doctor?.let {
-                DetailScreen(
-                    it, mainViewModel,userId,{ navController.popBackStack() }
-                )
+                DetailScreen(it, mainViewModel,userId,{ navController.popBackStack() } )
             }
         }
+        composable("top_doctor_list") { TopDoctorListScreen(navController, mainViewModel, userId) }
 
-        composable("top_doctor_list") {
-            TopDoctorListScreen(
-                navController = navController,
-                viewModel = mainViewModel,
-                userId = userId
-            )
-        }
-        composable("wishlist") {
-            WishlistScreen(
-                navController = navController,
-                viewModel = mainViewModel,
-                userId = userId
-            )
-        }
-        composable("setting") { SettingScreen(navController) }
-        composable("profile") { ProfileScreen(navController) }
+        composable("wishlist") { WishlistScreen( navController,mainViewModel,userId) }
+        composable("setting") { SettingScreen(navController,mainViewModel,userId) }
+        composable("profile") { ProfileScreen(navController,mainViewModel,userId) }
     }
 }

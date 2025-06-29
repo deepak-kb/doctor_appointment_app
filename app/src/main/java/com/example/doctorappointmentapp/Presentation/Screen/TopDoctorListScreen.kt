@@ -18,6 +18,8 @@ import androidx.navigation.NavController
 import com.example.doctorappointmentapp.Data.DoctorsModel
 import com.example.doctorappointmentapp.Presentation.Component.DoctorItem
 import com.example.doctorappointmentapp.Presentation.ViewModel.MainViewModel
+import com.google.firebase.auth.FirebaseAuth
+import kotlinx.coroutines.delay
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -27,11 +29,11 @@ fun TopDoctorListScreen(
     userId: String
 ) {
     val doctorList by viewModel.doctors.collectAsState(initial = emptyList())
-    val wishlistedDoctorIds = viewModel.wishlistedDoctorIds
+    val wishlistedDoctorIds by viewModel.wishlistedDoctorIds.collectAsState()
 
     LaunchedEffect(Unit) {
-        viewModel.loadDoctors()
-        viewModel.loadWishlist(userId)
+            viewModel.loadDoctors()
+            viewModel.loadWishlist(userId)
     }
 
     Scaffold(
