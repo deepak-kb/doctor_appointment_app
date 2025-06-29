@@ -39,10 +39,10 @@ An Android app built using Kotlin + Jetpack Compose to help users book appointme
 ![Wishlist](screenshots/7_wishlist.png)
 
 ### ⚙️ Setting Screen
-![Setting Screen](screenshots/8_Setting.png)
+![Setting Screen](screenshots/8_setting.png)
 
 ### 👤 Profile Screen
-![Profile Screen](screenshots/9_Profile.png)
+![Profile Screen](screenshots/9_profile.png)
 
 ---
 
