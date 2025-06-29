@@ -10,6 +10,7 @@ An Android app built using Kotlin + Jetpack Compose to help users book appointme
 - 🔐 Firebase Authentication
 - 👨‍⚕️ Explore Doctor Profiles by Specialty
 - ❤️ Add to Wishlist
+- ⚙️ Settings & Profile Management
 - 💾 MVVM Architecture with Clean UI
 
 ---
@@ -29,13 +30,19 @@ An Android app built using Kotlin + Jetpack Compose to help users book appointme
 ![Home Screen](screenshots/4_home.png)
 
 ### 👨‍⚕️ Top Doctors
-![Top Doctors](screenshots/5_top_dpctor.png)
+![Top Doctors](screenshots/5_top_doctor.png)
 
 ### 📄 Doctor Detail Screen
 ![Doctor Detail](screenshots/6_detail.png)
 
 ### ❤️ Wishlist Screen
-![Wishlist](screenshots/7_whislist.png)
+![Wishlist](screenshots/7_wishlist.png)
+
+### ⚙️ Setting Screen
+![Setting Screen](screenshots/8_Setting.png)
+
+### 👤 Profile Screen
+![Profile Screen](screenshots/9_Profile.png)
 
 ---
 
