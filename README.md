@@ -29,13 +29,13 @@ An Android app built using Kotlin + Jetpack Compose to help users book appointme
 ![Home Screen](screenshots/4_home.png)
 
 ### 👨‍⚕️ Top Doctors
-![Top Doctors](screenshots/5_top_dpctor.png)
+![Top Doctors](screenshots/5_top_doctor.png)
 
 ### 📄 Doctor Detail Screen
 ![Doctor Detail](screenshots/6_detail.png)
 
 ### ❤️ Wishlist Screen
-![Wishlist](screenshots/7_whislist.png)
+![Wishlist](screenshots/7_wishlist.png)
 
 ---
 
